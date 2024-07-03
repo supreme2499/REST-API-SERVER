@@ -2,7 +2,7 @@
 это личный репозиторий в котором я учуть работать с апи
 
 rest-api-serv
-
+___
 logic:
 
 GET /user -- list of users -- 200, 404, 500
@@ -21,4 +21,4 @@ PATH /user/:id -- partailly update user -- 204, 4xx, 500
 
 DELETE /user/:id -- delete user by id -- 204, 4xx, 500
 Этот запрос удаляет пользователя по id
-
+___
