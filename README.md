@@ -1,16 +1,17 @@
 # REST-API-SERVER
-это личный репозиторий в котором я учуть работать с апи
+это личный репозиторий в котором я учуть работать с API. Этот репозиторий не содержит никакой полезной информации
+просто в нём я учусь работать с API в своё удовольствие
 
 rest-api-serv
 ___
 logic:
 
-GET /user -- list of users -- 200, 404, 500
+GET /users -- list of users -- 200, 404, 500
    этот запрос даёт нам информацию о всех юзерах
 
 GET /user/:id -- user by id -- 200, 404,   500 этот запрос возвращает нам информацию о пользователе по его id 
 
-POST /user/:id --create user -- 204, 4xx, hendler location: url
+POST /users --create user -- 204, 4xx, hendler location: url
 этот запрос создаёт нового пользователя и возвращает ссылку на него
 
 PUT /user/:id -- fully update user -- 204, 4xx, 500

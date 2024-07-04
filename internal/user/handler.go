@@ -7,18 +7,25 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
+// константы - пути по которым отправляются запросы
 const (
-	usersURL = "/user"
+	usersURL = "/users"
 	userURL  = "/user/:uuid"
 )
 
+// вау пустая структура я хз зачем она нужна, ну ладно....
+// пусть пока что будет :(
 type handler struct {
 }
 
+// функция которая возвращает интерфейс(возвращает ссылку на пустую структуру описанную чуть выше)
+// тоже не понимаю зачем.....
 func NewHandler() handlers.Handler {
 	return &handler{}
 }
 
+// обработчик событий, регистер - регистрирует запросы, в методе просто перечисленны все
+// возможные запросы которые написанны ниже
 func (h *handler) Register(router *httprouter.Router) {
 	router.GET(usersURL, h.GetList)
 	router.GET(userURL, h.GetUserByUUID)
@@ -28,6 +35,7 @@ func (h *handler) Register(router *httprouter.Router) {
 	router.DELETE(userURL, h.DeleteUser)
 }
 
+// пока что в запросах просто затычки
 func (h *handler) GetList(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	w.Write([]byte("это лист с пользователями"))
 }
