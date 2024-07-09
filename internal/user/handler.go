@@ -27,6 +27,7 @@ func NewHandler() handlers.Handler {
 // обработчик событий, регистер - регистрирует запросы, в методе просто перечисленны все
 // возможные запросы которые написанны ниже
 func (h *handler) Register(router *httprouter.Router) {
+
 	router.GET(usersURL, h.GetList)
 	router.GET(userURL, h.GetUserByUUID)
 	router.POST(userURL, h.CreateUser)

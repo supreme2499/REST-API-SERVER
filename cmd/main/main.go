@@ -5,14 +5,18 @@ import (
 	"net"
 	"net/http"
 	"rest-api-server/internal/user"
+	"rest-api-server/pkg/logging"
 	"time"
 
 	"github.com/julienschmidt/httprouter"
 )
 
 func main() {
+
+	logger := logging.GetLogger()
+
 	//мультиплекстор или роутер. его мы используем для выполнения наших http запросов
-	log.Println("Создание роутера")
+	logger.Info("Создание роутера")
 	router := httprouter.New()
 
 	//вызываем функцию который возвращает ссылку на структуру handler которая нам нужна
@@ -30,15 +34,16 @@ func main() {
 }
 
 func start(router *httprouter.Router) {
-
+	logger := logging.GetLogger()
 	//что-то типо конфига куда мы передаём тип соединения(network) и порт на котором будет работать наш сервер
+	logger.Info("создание листинга")
 	listener, err := net.Listen("tcp", ":8080")
 
 	//проверяем наличие ошибки
 	if err != nil {
 		log.Fatal("listener is error", err)
 	}
-
+	logger.Info("Запуск обработчика событий")
 	server := &http.Server{
 		//хендлер(обработчик событий)
 		Handler: router,
@@ -48,5 +53,6 @@ func start(router *httprouter.Router) {
 		ReadTimeout: 15 * time.Second,
 	}
 	//запуск сервера + если появится ошибка код выйдет в лог фатал
+	logger.Info("сервер запущен")
 	log.Fatal(server.Serve(listener))
 }
