@@ -1,0 +1,7 @@
+---
+
+is_debud: true
+listen:
+  type: tcp
+  bind_ip: 0.0.0.0
+  port: 8080

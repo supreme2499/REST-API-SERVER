@@ -48,12 +48,12 @@ type Logger struct {
 }
 
 // метод позволяющий нам получить наш логгер в другом файле
-func GetLogger() Logger {
-	return Logger{e}
+func GetLogger() *Logger {
+	return &Logger{e}
 }
 
-func (l *Logger) GetLoggerWithField(k string, v interface{}) Logger {
-	return Logger{l.WithField(k, v)}
+func (l *Logger) GetLoggerWithField(k string, v interface{}) *Logger {
+	return &Logger{l.WithField(k, v)}
 }
 
 // это функция инициализации, она запускается автоматически и её задача это задать фармат логов.

@@ -3,6 +3,7 @@ package user
 import (
 	"net/http"
 	"rest-api-server/internal/handlers"
+	"rest-api-server/pkg/logging"
 
 	"github.com/julienschmidt/httprouter"
 )
@@ -16,11 +17,12 @@ const (
 // вау пустая структура я хз зачем она нужна, ну ладно....
 // пусть пока что будет :(
 type handler struct {
+	logger *logging.Logger
 }
 
 // функция которая возвращает интерфейс(возвращает ссылку на пустую структуру описанную чуть выше)
 // тоже не понимаю зачем.....
-func NewHandler() handlers.Handler {
+func NewHandler(logger *logging.Logger) handlers.Handler {
 	return &handler{}
 }
 
