@@ -23,13 +23,14 @@ type handler struct {
 // функция которая возвращает интерфейс(возвращает ссылку на пустую структуру описанную чуть выше)
 // тоже не понимаю зачем.....
 func NewHandler(logger *logging.Logger) handlers.Handler {
+	logger.Info("возвращение структуры обработчика")
 	return &handler{}
 }
 
 // обработчик событий, регистер - регистрирует запросы, в методе просто перечисленны все
 // возможные запросы которые написанны ниже
 func (h *handler) Register(router *httprouter.Router) {
-
+	h.logger.Info("Запуск обработчика")
 	router.GET(usersURL, h.GetList)
 	router.GET(userURL, h.GetUserByUUID)
 	router.POST(userURL, h.CreateUser)
